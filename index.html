@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Happy New Year</title>
+</head>
+<body>
+    <div class="container">
+        <h2><span>Countdown to New Year</span>2022</h2>
+        <div class="countdown">
+            <div id="day"></div>
+            <div id="hour"></div>
+            <div id="minute"></div>
+            <div id="second"></div>
+        </div>
+
+        
+    </div>
+    <p class="credit">
+        Photo by Laura James from Pexels
+        </p>
+
+    <script type="text/javascript">
+        let countDate = new Date('Jan 1, 2022 00:00:00').getTime();
+        function newYear(){
+            let now =  new Date().getTime();
+                gap = countDate - now;
+
+                let second = 1000;
+                let minute = second * 60;
+                let hour = minute * 60;
+                let day = hour * 24;
+
+                let d = Math.floor(gap / (day));
+                let h = Math.floor((gap % (day)) / (hour));
+                let m = Math.floor((gap % (hour)) / (minute));
+                let s = Math.floor((gap % (minute)) / (second));
+
+                document.getElementById('day').innerHTML = d;
+                document.getElementById('hour').innerHTML = h;
+                document.getElementById('minute').innerHTML = m;
+                document.getElementById('second').innerHTML = s;
+        }
+
+        setInterval(function(){
+            newYear();
+        },1000)
+
+    </script>
+</body>
+</html>
