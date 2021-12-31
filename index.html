@@ -9,13 +9,16 @@
 </head>
 <body>
     <div class="container">
-        <h2><span>Countdown to New Year</span>2022</h2>
-        <div class="countdown">
+        <h2 id="old"><span>Countdown to New Year</span>2022</h2>
+        <h2 class="hide-display" id="new"><span>Welcome to New Year</span>2022</h2>
+        <div class="countdown" id="cd">
             <div id="day"></div>
             <div id="hour"></div>
             <div id="minute"></div>
             <div id="second"></div>
         </div>
+
+        <h2 class="hide-display" id="newyear">Happy New Year</h2>
 
         
     </div>
@@ -24,7 +27,12 @@
         </p>
 
     <script type="text/javascript">
-        let countDate = new Date('Jan 1, 2022 00:00:00').getTime();
+        let countDate = new Date('Jan 01, 2022 00:00:00').getTime();
+        let greetings = document.getElementById('newyear');
+        let countDown = document.getElementById("cd");
+        let oldYear = document.getElementById("old");
+        let newYearheading = document.getElementById("new");
+       
         function newYear(){
             let now =  new Date().getTime();
                 gap = countDate - now;
@@ -47,7 +55,15 @@
 
         setInterval(function(){
             newYear();
+            
         },1000)
+
+        setInterval(function(){
+             greetings.classList.remove('hide-display');
+             newYearheading.classList.remove('hide-display');
+             oldYear.classList.add('hide-display');
+            countDown.classList.add('hide-display');
+        },countDate - (new Date().getTime()))
 
     </script>
 </body>
